@@ -1,0 +1,111 @@
+/*
+  Design Tokens — Portfólio Victoria (@viicksocialmedia)
+  Fonte da verdade: prototype_extracted/design_handoff_portfolio_victoria/README.md
+  Extraído em 2026-08-10. Não altere valores aqui sem atualizar o handoff
+  correspondente — este arquivo é a única fonte de tokens para o projeto
+  (HTML/CSS/JS puro, sem build step / sem Tailwind).
+
+  Uso: importar/linkar este arquivo antes de qualquer outro CSS do projeto.
+    <link rel="stylesheet" href="/src/styles/tokens.css">
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* ===================================================================
+     COR — Fundos (background rhythm)
+     A alternância de fundos é intencional: cream / dark / tan / cream /
+     tan / dark, na ordem das seções da página. Nunca achatar para uma
+     única cor de fundo.
+     =================================================================== */
+  --color-bg-cream: #F6F3EF;   /* fundo padrão: nav, hero, highlights, sobre, portfólio */
+  --color-bg-tan: #EFE6D9;     /* faixa alternada: case em destaque, depoimentos */
+  --color-bg-dark: #151515;    /* faixa escura: métricas+manifesto, contato */
+
+  /* ===================================================================
+     COR — Texto e acentos
+     =================================================================== */
+  --color-text-body: #2B1E17;      /* texto de corpo e botões escuros sobre fundo claro (cream/tan) */
+  --color-text-on-dark: #F6F3EF;   /* texto sobre fundos escuros (--color-bg-dark) */
+  --color-accent-terracotta: #6D4B3A; /* acento principal: links, hover, outlines, eyebrows sobre fundo claro, foco de teclado */
+  --color-accent-gold: #D9A566;       /* acento sobre fundo escuro: números de estatística, eyebrows em itálico no dark band */
+
+  /* Contraste verificado (WCAG 2.1, texto normal):
+     terracotta (#6D4B3A) sobre cream (#F6F3EF) ≈ 6,99:1 — passa AA e quase AAA
+     gold (#D9A566) sobre dark (#151515)         ≈ 8,29:1 — passa AAA
+     text-body (#2B1E17) sobre cream (#F6F3EF)   — contraste muito alto, passa AAA
+     text-on-dark (#F6F3EF) sobre dark (#151515) — contraste muito alto, passa AAA */
+
+  /* Hover de link padrão (documentado no handoff, seção "Interactions & Behavior") */
+  --color-link: var(--color-text-body);          /* estado padrão sobre fundo claro */
+  --color-link-hover: var(--color-accent-terracotta); /* estado hover/focus sobre fundo claro */
+  --color-link-on-dark: var(--color-text-on-dark);        /* estado padrão sobre fundo escuro */
+  --color-link-on-dark-hover: #D9D2C8;                    /* cream levemente escurecido — hover sobre fundo escuro, mantém contraste */
+
+  /* ===================================================================
+     TIPOGRAFIA
+     =================================================================== */
+  --font-display: 'Cormorant Garamond', serif; /* eyebrows, aspas decorativas, headlines suaves/itálicas */
+  --font-body: 'Poppins', sans-serif;          /* corpo de texto, nav, botões, headlines em caixa alta */
+
+  /* Pesos usados no handoff */
+  --font-weight-display-regular: 400;
+  --font-weight-display-medium: 500;
+  --font-weight-display-semibold: 600;
+
+  --font-weight-body-light: 300;
+  --font-weight-body-regular: 400;
+  --font-weight-body-medium: 500;
+  --font-weight-body-semibold: 600;
+  --font-weight-body-bold: 700;   /* usado no wordmark do nav e no botão "Contato" */
+  --font-weight-body-extrabold: 800; /* headlines em caixa alta (hero, manifesto, contato) */
+
+  /* Escala de tamanho referenciada explicitamente no handoff */
+  --font-size-nav-link: 12px;     /* links de navegação, uppercase, 0.8 opacidade */
+  --font-size-index-label: 15px;  /* labels editoriais "01 — Sobre" etc., itálico, baixa opacidade */
+  --font-size-wordmark: 15px;     /* "viicksocialmedia" no nav, Poppins 700 */
+  --font-size-hero-headline: 58px; /* headline principal do hero, Poppins 800 uppercase (valor de referência desktop) */
+
+  /* ===================================================================
+     ESPAÇAMENTO
+     =================================================================== */
+  --space-section-y: clamp(90px, 13vw, 150px); /* padding vertical das seções principais (hero, sobre, case, portfólio, depoimentos) */
+  --space-band-y: clamp(36px, 6vw, 90px);      /* padding vertical de faixas menores (métricas, highlights) */
+  --space-section-x: clamp(24px, 5vw, 64px);   /* padding horizontal de todas as seções */
+  --content-max-width: 1280px;                 /* largura máxima do conteúdo, centralizado */
+
+  /* Medidas pontuais de componentes citadas no handoff */
+  --size-avatar-nav: 34px;      /* avatar circular no nav */
+
+  /* ===================================================================
+     RAIOS DE BORDA
+     =================================================================== */
+  --radius-sm: 4px;  /* raio mínimo em imagens e blocos de estatística */
+  --radius-md: 6px;  /* raio máximo em imagens e blocos de estatística (mesma família, extremo superior) */
+
+  /* ===================================================================
+     SOMBRAS
+     =================================================================== */
+  --shadow-testimonial: 0 12px 30px rgba(43, 30, 23, 0.12); /* screenshots de depoimento (rgba deriva de --color-text-body #2B1E17) */
+
+  /* ===================================================================
+     ACESSIBILIDADE — foco de teclado
+     =================================================================== */
+  --focus-ring-color: var(--color-accent-terracotta); /* #6D4B3A — só sobre fundo claro (cream/tan): ≈6,99:1 */
+  --focus-ring-color-on-dark: var(--color-accent-gold); /* #D9A566 — terracotta sobre --color-bg-dark cai para ≈2,36:1,
+    abaixo do mínimo 3:1 do WCAG 2.1 SC 1.4.11 para indicadores de foco; gold sobre dark mantém ≈8,29:1 */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+  --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color); /* usar com outline-offset: var(--focus-ring-offset) */
+  --focus-ring-on-dark: var(--focus-ring-width) solid var(--focus-ring-color-on-dark);
+
+  /* ===================================================================
+     BREAKPOINTS (referência)
+     O layout é fluido (CSS Grid auto-fit/minmax + clamp()), sem media
+     queries fixas no design original. Estes valores documentam a faixa
+     em que hero/sobre colapsam para coluna única — usar apenas como
+     referência de teste, não como breakpoint obrigatório no CSS.
+     =================================================================== */
+  --breakpoint-stack-max: 760px; /* acima deste viewport, grids de 2 colunas tendem a manter 2 colunas */
+  --breakpoint-stack-min: 600px; /* abaixo deste viewport, grids já colapsaram para 1 coluna */
+}

@@ -11,7 +11,10 @@ TypeScript/Next.js, C#/.NET e Java/Spring.
 Quando invocado:
 1. Rode `git diff` para ver as mudanças recentes
 2. Foque nos arquivos alterados
-3. Comece a revisão imediatamente
+3. Se os arquivos tocarem autenticação, autorização, pagamentos ou dados
+   sensíveis, sinalize que o security-reviewer também deve rodar — este
+   agente foca em qualidade/manutenibilidade, não em vetor de ataque
+4. Comece a revisão imediatamente
 
 Checklist:
 - Código claro e legível

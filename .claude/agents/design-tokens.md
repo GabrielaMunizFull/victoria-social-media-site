@@ -26,5 +26,8 @@ Regras:
 - Mantenha nomes semânticos (ex: `color-primary`, não `blue-500-custom`)
 - Sempre que possível, gere uma escala consistente (ex: múltiplos de 4px/8px
   para espaçamento)
+- Ao alterar um token já existente (não criar um novo), sinalize que é uma
+  mudança breaking — design-wireframe, design-review e developer consomem
+  esses valores e podem precisar ser re-executados
 
 Ao final, resuma os tokens criados ou alterados e onde foram salvos.

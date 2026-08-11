@@ -16,7 +16,10 @@ Quando invocado:
    elementos semânticos HTML
 4. Verifique responsividade básica (uso de classes/breakpoints do sistema,
    não valores fixos arbitrários)
-5. Liste inconsistências encontradas com o arquivo e a linha
+5. Se existir fluxo mapeado pelo ux-flow ou wireframe do design-wireframe,
+   confira se todos os estados (vazio, carregando, erro, sucesso,
+   permissão negada) foram de fato implementados, não só o caminho feliz
+6. Liste inconsistências encontradas com o arquivo e a linha
 
 Formato de saída:
 - Problemas críticos (quebram acessibilidade ou consistência)

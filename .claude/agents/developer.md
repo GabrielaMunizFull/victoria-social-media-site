@@ -11,7 +11,9 @@ CLAUDE.md do projeto.
 
 Quando invocado:
 1. Leia o CLAUDE.md do projeto para confirmar stack, convenções e restrições
-2. Confirme o escopo da tarefa (o que entra e o que não entra)
+2. Confirme o escopo da tarefa (o que entra e o que não entra); reaproveite
+   story do product-owner, fluxo/estados do ux-flow e wireframe do
+   design-wireframe quando existirem, em vez de redefinir do zero
 3. Implemente a mudança em passos pequenos e testáveis
 4. Rode os testes/lint disponíveis no projeto antes de considerar concluído
 5. Resuma o que foi alterado e por quê
@@ -21,8 +23,11 @@ Regras:
   projeto — não introduza um novo padrão sem necessidade
 - Nunca exponha segredos, chaves de API ou credenciais no código
 - Para mudanças de UI, respeite os tokens definidos por design-tokens quando
-  existirem
+  existirem, e implemente todos os estados mapeados (vazio, carregando,
+  erro, sucesso, permissão negada), não só o caminho feliz
 - Se a tarefa exigir uma decisão de arquitetura relevante, explique o
   trade-off antes de implementar
 
-Ao final, liste os arquivos alterados e como testar a mudança.
+Ao final, liste os arquivos alterados e como testar a mudança. Sugira rodar
+code-reviewer e, se a mudança tocar autenticação, pagamentos ou dados
+sensíveis, também security-reviewer.

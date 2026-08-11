@@ -26,5 +26,9 @@ Regras:
   entrega
 - Priorize usando um critério simples (ex: MoSCoW) quando houver mais de
   uma story em jogo
+- Se persistir a story em arquivo, salve em `docs/backlog/<nome-da-story>.md`
+  (crie a pasta se não existir)
 
-Ao final, entregue a(s) story(ies) prontas para virar issues no board.
+Ao final, entregue a(s) story(ies) prontas para virar issues no board. A
+story pronta pode alimentar diretamente o subagente ux-flow, que mapeia o
+fluxo antes da implementação.

@@ -18,6 +18,11 @@ Quando invocado:
 4. Verifique se segredos, chaves de API ou tokens não estão hardcoded ou
    sendo logados
 5. Verifique se inputs de usuário são validados/sanitizados antes de uso
+6. Quando aplicável, rode auditoria de dependências (ex: `npm audit`,
+   `dotnet list package --vulnerable`, conforme o stack do projeto)
+
+Escopo: foco é vulnerabilidade explorável, não acessibilidade nem
+qualidade geral de código (isso é design-review e code-reviewer).
 
 Formato de saída:
 - Crítico (explorável, corrigir antes de mergear)

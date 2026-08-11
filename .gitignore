@@ -18,3 +18,10 @@ obj/
 
 # Claude Code (local/pessoal, não deve ir pro repo)
 .claude/settings.local.json
+
+# Material bruto de handoff/mídia (originais não otimizados, só as versões
+# finais em assets/*.jpg|.mp4 são usadas pelo site — ver docs/ para contexto)
+Portfolio site para Victoria.zip
+prototype_extracted/
+assets/landing page da Victoria/
+assets/converted/
