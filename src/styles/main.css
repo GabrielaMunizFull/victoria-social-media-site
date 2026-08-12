@@ -122,6 +122,24 @@ a:focus-visible {
 }
 
 /* =====================================================================
+   OFFSET DE ÂNCORA — a nav é sticky (position: sticky; top: 0) e no mobile
+   quebra em 3 linhas (~138px). Sem isso, clicar num link do menu rola o
+   título da seção para debaixo da nav, cortando-o (bug real, verificado
+   em viewport de 375px: label "0X — Seção" some, H2 fica cortado no topo).
+   150px cobre a nav mais alta (3 linhas mobile) com folga; em telas largas
+   (nav com 1 linha, ~70px) sobra espaço — troca aceitável por nunca cortar
+   o título.
+   ===================================================================== */
+#sobre,
+#servicos,
+#case,
+#videos,
+#portfolio,
+#depoimentos {
+  scroll-margin-top: 150px;
+}
+
+/* =====================================================================
    LAYOUT — o conteúdo fica limitado a 1280px centralizado, mas as faixas
    coloridas (band--dark/band--tan) rompem esse limite e ocupam a largura
    inteira da tela em monitores grandes (ver truque de full-bleed abaixo).
@@ -294,6 +312,11 @@ a:focus-visible {
 }
 
 .nav__link {
+  /* padding em vez de aumentar font-size: alvo de toque ≥24px (WCAG 2.5.8)
+     sem alterar o tamanho visual do texto */
+  display: inline-block;
+  padding: 7px 2px;
+  margin: -7px -2px;
   opacity: 0.8;
 }
 
@@ -400,6 +423,103 @@ a:focus-visible {
   height: 100%;
   object-fit: cover;
   object-position: 50% 20%;
+}
+
+/* =====================================================================
+   SERVIÇOS — cards com lista de itens por categoria de serviço
+   ===================================================================== */
+.services {
+  padding: var(--space-section-y) var(--space-section-x);
+}
+
+.services__headline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(30px, 5vw, 40px);
+  margin-bottom: 40px;
+  font-weight: var(--font-weight-display-regular);
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 56px;
+}
+
+.services__card {
+  background: var(--color-bg-tan);
+  border-radius: var(--radius-md);
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.services__card-title {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-body-bold);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 10px;
+}
+
+.services__card-desc {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(43, 30, 23, 0.7);
+  margin-bottom: 16px;
+}
+
+.services__card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(43, 30, 23, 0.78);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.services__card-list li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.services__card-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-terracotta);
+}
+
+.services__note {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services__note-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(18px, 2.5vw, 22px);
+  color: var(--color-accent-terracotta);
+  margin-bottom: 14px;
+}
+
+.services__note-text {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(43, 30, 23, 0.75);
+  margin-bottom: 10px;
+}
+
+.services__note-text:last-child {
+  margin-bottom: 0;
 }
 
 /* =====================================================================
@@ -576,6 +696,17 @@ a:focus-visible {
   background: #fff;
 }
 
+.case__video {
+  /* contain (não cover) para casar com o resto do grid — cover cortava as
+     laterais do próprio reel que prova o resultado do case */
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-dark);
+  display: block;
+}
+
 .case__stacked {
   display: flex;
   flex-direction: column;
@@ -684,24 +815,6 @@ a:focus-visible {
   gap: 18px;
 }
 
-.portfolio__placeholder {
-  width: 100%;
-  min-height: 320px;
-  height: 100%;
-  border-radius: var(--radius-md);
-  background: var(--color-bg-tan);
-  border: 1px solid rgba(43, 30, 23, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 1.4;
-  color: rgba(43, 30, 23, 0.55);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-}
-
 .portfolio__case {
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -800,6 +913,61 @@ a:focus-visible {
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+/* =====================================================================
+   LIGHTBOX — depoimentos abrem em modal (dialog nativo) em vez de aba nova
+   ===================================================================== */
+.lightbox {
+  /* sem position: relative — quebraria a centralização nativa do <dialog>
+     via top layer (ele passa a ocupar a posição estática no fluxo do
+     documento em vez de centralizar na viewport). O <dialog> já é seu
+     próprio bloco de posicionamento para o botão de fechar. */
+  border: none;
+  padding: 0;
+  max-width: min(92vw, 720px);
+  max-height: 92vh;
+  background: transparent;
+}
+
+.lightbox::backdrop {
+  background: rgba(21, 21, 21, 0.85);
+}
+
+.lightbox__image {
+  display: block;
+  width: 100%;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(21, 21, 21, 0.7);
+  color: var(--color-text-on-dark);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__close:hover {
+  background: rgba(21, 21, 21, 0.9);
+}
+
+.lightbox__close:focus-visible {
+  outline: var(--focus-ring-on-dark);
+  outline-offset: 2px;
 }
 
 /* =====================================================================

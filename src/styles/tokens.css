@@ -69,7 +69,12 @@
   /* ===================================================================
      ESPAÇAMENTO
      =================================================================== */
-  --space-section-y: clamp(90px, 13vw, 150px); /* padding vertical das seções principais (hero, sobre, case, portfólio, depoimentos) */
+  /* Antes clamp(90px,13vw,150px): como a maioria das seções usa este mesmo
+     token no padding de cima E de baixo, o vão ENTRE duas seções somava até
+     150+150=300px em telas largas — sensação de "espaço vazio demais"
+     reportada. Reduzido para deixar a transição mais compacta sem perder
+     a respiração entre os blocos de conteúdo. */
+  --space-section-y: clamp(56px, 9vw, 104px); /* padding vertical das seções principais (hero, sobre, case, portfólio, depoimentos) */
   --space-band-y: clamp(36px, 6vw, 90px);      /* padding vertical de faixas menores (métricas, highlights) */
   --space-section-x: clamp(24px, 5vw, 64px);   /* padding horizontal de todas as seções */
   --content-max-width: 1280px;                 /* largura máxima do conteúdo, centralizado */
