@@ -806,8 +806,11 @@ a:focus-visible {
 }
 
 .portfolio__grid {
+  /* max de coluna travado (não 1fr): com só 1 case, 1fr esticava o card pra
+     largura toda e o vídeo 9:16 virava faixa horizontal distorcida */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 380px));
+  justify-content: start;
   gap: 18px;
 }
 
