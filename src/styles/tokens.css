@@ -7,9 +7,13 @@
 
   Uso: importar/linkar este arquivo antes de qualquer outro CSS do projeto.
     <link rel="stylesheet" href="/src/styles/tokens.css">
-*/
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+  Fonte do Google Fonts é carregada via <link> direto no <head> do
+  index.html (não @import aqui) — @import dentro de CSS cria uma cadeia
+  serializada (baixa tokens.css → parseia → só então descobre a fonte),
+  atrasando o render. <link> no HTML é descoberto pelo preload scanner
+  junto com o resto, em paralelo.
+*/
 
 :root {
   /* ===================================================================

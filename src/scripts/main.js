@@ -65,6 +65,8 @@
     document.documentElement.style.setProperty('--nav-height', (nav.offsetHeight + 12) + 'px');
   }
 
-  updateNavOffset();
+  // requestAnimationFrame em vez de leitura direta: deixa o layout inicial
+  // assentar antes de forçar a medição (evita "forced reflow" logo na carga).
+  requestAnimationFrame(updateNavOffset);
   window.addEventListener('resize', updateNavOffset);
 })();
