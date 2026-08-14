@@ -126,9 +126,9 @@ a:focus-visible {
    quebra em 3 linhas (~138px). Sem isso, clicar num link do menu rola o
    título da seção para debaixo da nav, cortando-o (bug real, verificado
    em viewport de 375px: label "0X — Seção" some, H2 fica cortado no topo).
-   150px cobre a nav mais alta (3 linhas mobile) com folga; em telas largas
-   (nav com 1 linha, ~70px) sobra espaço — troca aceitável por nunca cortar
-   o título.
+   --nav-height é medida em tempo real por src/scripts/main.js (altura real
+   da nav, que varia com a quebra de linha) e escrita na raiz do documento;
+   150px é só o fallback pra quando JS não roda (nav de 3 linhas no mobile).
    ===================================================================== */
 #sobre,
 #servicos,
@@ -136,7 +136,7 @@ a:focus-visible {
 #videos,
 #portfolio,
 #depoimentos {
-  scroll-margin-top: 150px;
+  scroll-margin-top: var(--nav-height, 150px);
 }
 
 /* =====================================================================
@@ -940,6 +940,16 @@ a:focus-visible {
   object-fit: contain;
   border-radius: var(--radius-md);
   background: #fff;
+}
+
+.lightbox__error {
+  margin: 0;
+  padding: 40px;
+  border-radius: var(--radius-md);
+  background: #fff;
+  color: var(--color-text-body);
+  text-align: center;
+  font-size: 14px;
 }
 
 .lightbox__close {
