@@ -688,10 +688,6 @@ a:focus-visible {
   border-radius: var(--radius-md);
 }
 
-.case__image--on-dark {
-  background: var(--color-bg-dark);
-}
-
 .case__image--on-white {
   background: #fff;
 }
