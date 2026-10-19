@@ -5,31 +5,33 @@
 > Claude precisa perguntar ou adivinhar.
 
 ## Sobre o projeto
-- Nome:
-- Objetivo:
-- Público-alvo:
+- Nome: Victoria — Social Media Manager (@viicksocialmedia)
+- Objetivo: Landing page one-page de portfólio da Victoria para mostrar serviços, cases com resultado e depoimentos, e levar o visitante ao WhatsApp
+- Público-alvo: Profissionais e pequenos negócios (clínicas, escritórios, consultórios) que querem crescer nas redes sociais; atendimento online para todo o Brasil
 
 ## Stack técnica
-- Frontend:
-- Backend:
-- Banco de dados:
-- Hospedagem / Deploy:
-- Outras ferramentas:
+- Frontend: HTML + CSS + JavaScript puro (sem framework/build step)
+- Backend: Nenhum (site estático)
+- Banco de dados: Nenhum
+- Hospedagem / Deploy: Vercel (https://victoria-social-media-site.vercel.app/)
+- Outras ferramentas: Google Fonts (Cormorant Garamond, Poppins); ffmpeg para comprimir vídeos e gerar pôsteres
 
 ## Convenções de código
-- Padrão de nomenclatura:
-- Estrutura de pastas:
-- Padrão de commits (ex: Conventional Commits):
-- Estratégia de testes:
+- Padrão de nomenclatura: classes CSS em BEM (`bloco__elemento--modificador`)
+- Estrutura de pastas: `index.html`, `src/styles/tokens.css` (tokens, fonte da verdade), `src/styles/main.css`, `src/scripts/main.js`, `assets/` (só arquivos finais otimizados — originais ficam em pastas ignoradas pelo Git)
+- Padrão de commits: mensagens curtas e descritivas em português
+- Estratégia de testes: verificação visual manual (desktop e mobile), sem suíte automatizada
 
 ## Comandos úteis
-- `npm run dev` — sobe o ambiente local
-- `npm run build` — build de produção
-- `npm run test` — roda a suíte de testes
+- Não há build — sirva a pasta com qualquer servidor estático (ex: `python -m http.server`)
+- Vídeo novo: `ffmpeg -i ENTRADA -vf "scale=540:-2,fps=30" -c:v libx264 -crf 28 -preset slow -c:a aac -b:a 96k -movflags +faststart assets/NOME.mp4`
+- Imagem nova: converter para `.webp` (ex: `ffmpeg -i ENTRADA -quality 80 assets/NOME.webp`)
 
 ## Regras e restrições
 - Nunca faça commit direto na `main`; sempre abra PR
 - Nunca exponha chaves de API, tokens ou segredos em código ou logs
+- Contato via WhatsApp usa `wa.me/555596253172` com mensagem pré-preenchida (o link antigo `w.app/viicksocialmedia` estava fora do ar)
+- Ao mudar serviços ou perguntas frequentes, atualize também o JSON-LD (`ProfessionalService` e `FAQPage`) no `<head>`
 - (adicione restrições específicas do projeto aqui)
 
 ## Subagentes disponíveis
