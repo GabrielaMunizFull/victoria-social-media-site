@@ -527,7 +527,7 @@ a:focus-visible {
    ===================================================================== */
 .metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: clamp(24px, 5vw, 40px);
   padding: clamp(60px, 9vw, 90px) var(--space-section-x) clamp(40px, 6vw, 56px);
   text-align: center;
@@ -845,6 +845,35 @@ a:focus-visible {
   height: 74px;
   object-fit: cover;
   display: block;
+}
+
+/* Antes/depois de perfil (case sem vídeo) */
+.portfolio__case-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  background: #fff;
+}
+
+.portfolio__case-compare figure {
+  margin: 0;
+}
+
+.portfolio__case-compare img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  display: block;
+}
+
+.portfolio__case-compare figcaption {
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(43, 30, 23, 0.68);
+  margin-top: 6px;
 }
 
 .portfolio__case-body {
